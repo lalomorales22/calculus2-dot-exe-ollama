@@ -1,0 +1,152 @@
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background: #000000;
+    color: #00FF41;
+  }
+}
+
+@layer components {
+  .retro-border {
+    border: 2px solid currentColor;
+    box-shadow: 
+      inset 2px 2px 0px rgba(255, 255, 255, 0.1),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .retro-button {
+    @apply retro-border px-3 py-1 bg-black hover:bg-gray-900 transition-colors cursor-pointer;
+  }
+  
+  .retro-input {
+    @apply retro-border bg-black px-2 py-1 outline-none focus:shadow-lg;
+  }
+  
+  .chunk-header {
+    @apply retro-border bg-black p-3 cursor-pointer hover:bg-gray-900 transition-all;
+  }
+  
+  .math-formula {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(0, 255, 65, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #00FF41;
+  }
+
+  .formula-box {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formula-box .katex-display {
+    margin: 0;
+    text-align: center;
+  }
+
+  .formula-box .katex {
+    color: #00FF41 !important;
+    font-size: 1.1em;
+  }
+
+  .inline-formula .katex {
+    color: #00FF41 !important;
+    background: rgba(0, 255, 65, 0.1);
+    padding: 1px 3px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+  }
+
+  .math-content .katex {
+    color: inherit !important;
+  }
+
+  .math-content .katex-display {
+    margin: 0.5em 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .drag-handle {
+    cursor: col-resize;
+    background: linear-gradient(90deg, transparent 40%, #00FF41 50%, transparent 60%);
+    transition: background 0.2s ease;
+  }
+  
+  .drag-handle:hover {
+    background: linear-gradient(90deg, transparent 30%, #00FF41 50%, transparent 70%);
+  }
+  
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #00FF41 #000000;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #000000;
+    border: 1px solid #00FF41;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #00FF41;
+    border-radius: 0;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #FF6B35;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
