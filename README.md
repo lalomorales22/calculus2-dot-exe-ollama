@@ -4,6 +4,9 @@
 ![Version](https://img.shields.io/badge/version-2.0-orange?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-ACTIVE-red?style=for-the-badge)
 
+<img width="1095" alt="Screenshot 2025-06-17 at 12 45 56 AM" src="https://github.com/user-attachments/assets/1206ee22-4d95-4957-8848-6c621b5da7c7" />
+
+
 A retro-styled, interactive Calculus II learning platform with AI tutoring capabilities powered by Ollama. Experience calculus concepts through an immersive 8-bit terminal interface with comprehensive formula references, interactive visualizations, and personalized AI assistance.
 
 ## 🎮 Features
