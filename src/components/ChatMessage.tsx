@@ -10,17 +10,26 @@ interface ChatMessageProps {
 
 export function ChatMessage({ text, isUser, image, timestamp }: ChatMessageProps) {
   const formatMathText = (text: string) => {
-    // Split text by math delimiters and render accordingly
-    const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/);
+    // Split text by various math delimiters and render accordingly
+    // Handle: $$...$$, $...$, \[...\], \(...\)
+    const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/);
     
     return parts.map((part, index) => {
       if (part.startsWith('$$') && part.endsWith('$$')) {
-        // Block math
+        // Block math: $$...$$
+        const math = part.slice(2, -2);
+        return <MathRenderer key={index} math={math} block={true} />;
+      } else if (part.startsWith('\\[') && part.endsWith('\\]')) {
+        // Block math: \[...\]
         const math = part.slice(2, -2);
         return <MathRenderer key={index} math={math} block={true} />;
       } else if (part.startsWith('$') && part.endsWith('$')) {
-        // Inline math
+        // Inline math: $...$
         const math = part.slice(1, -1);
+        return <MathRenderer key={index} math={math} block={false} />;
+      } else if (part.startsWith('\\(') && part.endsWith('\\)')) {
+        // Inline math: \(...\)
+        const math = part.slice(2, -2);
         return <MathRenderer key={index} math={math} block={false} />;
       } else {
         // Regular text with potential formatting
